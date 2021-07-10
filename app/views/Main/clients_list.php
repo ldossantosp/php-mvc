@@ -21,8 +21,8 @@
           echo "<td>{$row['name']}</td>";
           echo "<td>{$row['email']}</td>";
           echo "<td>{$row['address']}</td>";
-          echo "<td><a href='" . FOLDER_PATH ."/main/clientList/{$row['id']}'>Edit</a></td>";
-          echo "<td><a href='" . FOLDER_PATH ."/main/removeClient/{$row['id']}'>Remove</a></td>";
+          echo "<td><a href='" . FOLDER_PATH ."/Main/clientList/{$row['id']}'>Edit</a></td>";
+          echo "<td><a href='" . FOLDER_PATH ."/Main/removeClient/{$row['id']}'>Remove</a></td>";
           echo '</tr>';
         }
         ?>

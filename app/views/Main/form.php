@@ -1,7 +1,7 @@
 <h2>Add client form</h2>
 <div class="row">
   <div class="col-md-6">
-    <form method="POST" action="<?= FOLDER_PATH . '/main/addClient' ?>">
+    <form method="POST" action="<?= FOLDER_PATH . '/Main/addClient' ?>">
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" name="name" class="form-control" id="name" placeholder="Name" >

@@ -2,7 +2,7 @@
 <?php !$info_client ? exit('Hubo un error al cargar la información del cliente') : '' ?>
 <div class="row">
   <div class="col-md-6">
-    <form method="POST" action="<?= FOLDER_PATH . '/main/updateClient' ?>">
+    <form method="POST" action="<?= FOLDER_PATH . '/Main/updateClient' ?>">
       <div class="form-group">
         <label for="name">Name</label>
         <input type="text" name="name" class="form-control" id="name" placeholder="Name" value="<?= $info_client->name ?>">
@@ -17,7 +17,7 @@
       </div>
       <input type="hidden" name="id" value="<?= $info_client->id ?>">
       <button type="submit" class="btn btn-primary">Submit</button>
-      <a class="btn btn-default" href="<?= FOLDER_PATH . '/main/clientsList' ?>" role="button">Cancel</a>
+      <a class="btn btn-default" href="<?= FOLDER_PATH . '/Main/clientsList' ?>" role="button">Cancel</a>
     </form>
   </div>
 </div>

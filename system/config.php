@@ -13,7 +13,7 @@ define('REQUEST_METHOD', $_SERVER['REQUEST_METHOD']);
 // Valores de rutas
 /////////////////////////////////////
 
-define('FOLDER_PATH', '/php-mvc');
+define('FOLDER_PATH', '/php-mvc-1');
 
 define('ROOT', $_SERVER['DOCUMENT_ROOT']);
 
@@ -38,7 +38,7 @@ define('DEFAULT_CONTROLLER', 'Home');
 
 define('HOST', 'localhost');
 define('USER', 'root');
-define('PASSWORD', '');
+define('PASSWORD', 'root');
 define('DB_NAME', 'curso_mvc');
 
 //////////////////////////////////////
