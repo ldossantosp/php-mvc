@@ -41,7 +41,7 @@ class LoginController extends Controller
 
     $this->session->init();
     $this->session->add('email', $result->email);
-    header('location: /php-mvc/main');
+    header('location: /php-mvc-1/Main');
   }
 
   private function verify($request_params)
