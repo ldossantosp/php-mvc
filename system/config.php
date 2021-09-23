@@ -25,6 +25,8 @@ define('HELPER_PATH', 'system/helpers/');
 
 define('LIBS_ROUTE', ROOT . FOLDER_PATH . '/system/libs/');
 
+define ('PATH_UPLOAD_IMAGES', ROOT.'/uploads/');
+
 //////////////////////////////////////
 // Valores de core
 /////////////////////////////////////
@@ -36,10 +38,10 @@ define('DEFAULT_CONTROLLER', 'Home');
 // Valores de base de datos
 /////////////////////////////////////
 
-define('HOST', 'localhost');
+define('HOST', '127.0.0.1');
 define('USER', 'root');
 define('PASSWORD', 'root');
-define('DB_NAME', 'curso_mvc');
+define('DB_NAME', 'Restaurante');
 
 //////////////////////////////////////
 // Valores configuracion

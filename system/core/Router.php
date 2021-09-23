@@ -65,8 +65,12 @@ class Router
    */
   public function setParam()
   {
-    if(REQUEST_METHOD === 'POST')
+    if(REQUEST_METHOD === 'POST'){
       $this->param = $_POST;
+      //para pasar la información de la imagen por parametro
+      if(!empty($_FILES))
+        $this->param += $_FILES;
+    }
     else if (REQUEST_METHOD === 'GET')
       $this->param = ! empty($this->uri[4]) ? $this->uri[4] : '';
   }

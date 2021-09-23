@@ -18,10 +18,11 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<?= FOLDER_PATH . '/Main/form' ?>">Add client</a></li>
         <li><a href="<?= FOLDER_PATH . '/Main/clientsList' ?>">Clients list</a></li>
+        <li><a href="<?= FOLDER_PATH . '/Plato/PlatosList' ?>">Platos</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $email ?> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $cedula ?> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/php-mvc/main/logout">Cerrar sesión</a></li>
+            <li><a href="/php-mvc-1/main/logout">Cerrar sesión</a></li>
           </ul>
         </li>
       </ul>

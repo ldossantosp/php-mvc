@@ -63,5 +63,4 @@ class View
       throw new Exception("Error No existe $file_path");
     }
   }
-
 }

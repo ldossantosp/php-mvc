@@ -66,10 +66,10 @@
 
       <form class="form-signin" method="POST" action="<?= FOLDER_PATH . '/Login/signin' ?>">
         <h2 class="form-signin-heading text-center">Please sign in</h2>
-        <label for="inputEmail" class="sr-only">Email address</label>
-        <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="cedula" class="sr-only">cedula</label>
+        <input type="text" name="cedula" id="cedula" class="form-control" placeholder="cedula" required autofocus>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" >
+        <input type="password" name="password" id="password" class="form-control" placeholder="password" >
         <?php !empty($error_message) ? print($error_message) : '' ?>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>

@@ -17,7 +17,7 @@ class MainController extends Controller
   {
     $this->session = new Session();
     $this->session->init();
-    if($this->session->getStatus() === 1 || empty($this->session->get('email')))
+    if($this->session->getStatus() === 1 || empty($this->session->get('cedula')))
       exit('Acceso denegado');
     $this->model = new MainModel();
   }
@@ -30,12 +30,12 @@ class MainController extends Controller
   public function logout()
   {
     $this->session->close();
-    header('location: /php-mvc/login');
+    header('location: /php-mvc-1/Login');
   }
 
   public function form($message = '')
   {
-    $params = array('email' => $this->session->get('email'),'show_form' => true, 'message' => $message);
+    $params = array('cedula' => $this->session->get('cedula'),'show_form' => true, 'message' => $message);
     $this->render(__CLASS__, $params);
   }
 
@@ -43,7 +43,7 @@ class MainController extends Controller
   {
     $clients = $this->model->clientsList();
 
-    $params = array('email' => $this->session->get('email'),'show_clients_list' => true, 'message_type' => $message_type, 'message' => $message, 'clients' => $clients);
+    $params = array('cedula' => $this->session->get('cedula'),'show_clients_list' => true, 'message_type' => $message_type, 'message' => $message, 'clients' => $clients);
     return $this->render(__CLASS__, $params);
   }
 
@@ -55,7 +55,7 @@ class MainController extends Controller
     ? $info_client = array()
     : $info_client = $result->fetch_object();
 
-    $params = array('email' => $this->session->get('email'), 'show_edit_form' => true, 'info_client' => $info_client);
+    $params = array('cedula' => $this->session->get('cedula'), 'show_edit_form' => true, 'info_client' => $info_client);
     return $this->render(__CLASS__, $params);
   }
 

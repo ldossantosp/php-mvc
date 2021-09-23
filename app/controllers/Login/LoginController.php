@@ -25,28 +25,32 @@ class LoginController extends Controller
   }
 
   public function signin($request_params)
-  {
+  { 
     if($this->verify($request_params))
-      return $this->renderErrorMessage('El email y password son obligatorios');
+      return $this->renderErrorMessage('La cedula y password son obligatorios');
 
-    $result = $this->model->signIn($request_params['email']);
+    $result = $this->model->signIn($request_params['cedula']);
 
     if(!$result->num_rows)
-      return $this->renderErrorMessage("El email {$request_params['email']} no fue encontrado");
+      return $this->renderErrorMessage("La cedula {$request_params['cedula']} no fue encontrada");
 
-    $result = $result->fetch_object();
+      //La variable result luego del fetch_object queda con los campos de la Base de Datos    
+      $result = $result->fetch_object();
 
-    if(!password_verify($request_params['password'], $result->password))
+    if(!$request_params['password'] === $result->Password)
       return $this->renderErrorMessage('La contraseña es incorrecta');
 
     $this->session->init();
-    $this->session->add('email', $result->email);
-    header('location: /php-mvc-1/Main');
+    $this->session->add('cedula', $result->CI);
+    $this->session->add('nombre', $result->Nombre);
+    $tipoUsuario = $this->model->getTipoUsuario($result->CI);
+    if ($tipoUsuario == 'Cliente')
+      header('location: /php-mvc-1/MainCliente');
   }
 
   private function verify($request_params)
   {
-    return empty($request_params['email']) OR empty($request_params['password']);
+    return empty($request_params['cedula']) OR empty($request_params['password']);
   }
 
   private function renderErrorMessage($message)
