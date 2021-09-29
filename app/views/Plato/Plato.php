@@ -17,7 +17,7 @@ header ('Content-type: text/html; charset=utf8');?>
   <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Developero</a>
+        <a class="navbar-brand" href="#">Plato</a>
       </div>
 
       <ul class="nav navbar-nav navbar-right">
@@ -25,7 +25,7 @@ header ('Content-type: text/html; charset=utf8');?>
         <li><a href="<?= FOLDER_PATH . '/Plato/PlatosList' ?>">Platos list</a></li>
         <li><a href="<?= FOLDER_PATH . '/Main' ?>">Clientes</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $cedula ?> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $nombre ?> <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="/php-mvc-1/Main/logout">Cerrar sesión</a></li>
           </ul>

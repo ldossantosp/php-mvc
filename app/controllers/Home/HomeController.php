@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No se permite acceso directo');
-require_once ROOT . '/php-mvc/app/models/Home/HomeModel.php';
+require_once ROOT . FOLDER_PATH .'/app/models/Home/HomeModel.php';
+require_once LIBS_ROUTE .'Session.php';
 /**
  * Home controller
  */
@@ -30,7 +31,7 @@ class HomeController extends Controller
   */
   public function exec()
   {
-    $this->show();
+    $this->InfoPlatoFotos();
   }
 
   /**
@@ -52,5 +53,23 @@ class HomeController extends Controller
     $this->show();
   }
 
+  public function InfoPlatoFotos()
+  {
+    $res = $this->model->listarInfoPlatos();
+    $contador = 0;
+    while ($row = $res->fetch_assoc())
+    {
+      $fotos = $this->model->ListarFotosPlato($row['Id']);
+      //$info_plato["{$row['Id']}"] = $fotos;
+      $info_plato[$contador] [1]= $row['Id'];
+      $info_plato[$contador] [2]= $row['Nombre'];
+      $info_plato[$contador] [3]= $row['Descripcion'];
+      $info_plato[$contador] [4]= $fotos;
+      $contador++;
+    }
+
+    $params = array('info_plato' => $info_plato);
+    $this->render(__CLASS__, $params); 
+  }
 
 }

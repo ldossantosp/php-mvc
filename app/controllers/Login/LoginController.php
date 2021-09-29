@@ -46,6 +46,8 @@ class LoginController extends Controller
     $tipoUsuario = $this->model->getTipoUsuario($result->CI);
     if ($tipoUsuario == 'Cliente')
       header('location: /php-mvc-1/MainCliente');
+    if ($tipoUsuario == 'Administrativo')
+      header('location: /php-mvc-1/Main');
   }
 
   private function verify($request_params)

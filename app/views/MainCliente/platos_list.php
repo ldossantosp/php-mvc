@@ -24,7 +24,7 @@
             echo "<td>{$row['Precio']}</td>";
             echo "<td>{$row['Nombre']}</td>";
             $nameFoto = $row['Foto'];
-            echo "<td><img src=\"/uploads/$nameFoto\"></td>";
+            echo "<td><img src=\"/uploads/$nameFoto\"></td>"; 
             echo "<td><a href='" . FOLDER_PATH ."/MainCliente/platoFotosList/{$row['Id']}'>Ver más...</a></td>";
             echo "<td><a href='" . FOLDER_PATH ."/Plato/PlatoFotos/{$row['Id']}'>Pedir</a></td>";
             echo '</tr>';

@@ -12,17 +12,17 @@
   <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">Developero</a>
+        <a class="navbar-brand" href="#">Bienvenido Administrativo</a>
       </div>
 
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<?= FOLDER_PATH . '/Main/form' ?>">Add client</a></li>
-        <li><a href="<?= FOLDER_PATH . '/Main/clientsList' ?>">Clients list</a></li>
+        <li><a href="<?= FOLDER_PATH . '/Main/clientsList' ?>">Clientes</a></li>
         <li><a href="<?= FOLDER_PATH . '/Plato/PlatosList' ?>">Platos</a></li>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?= $cedula ?> <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?=$nombre?> <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="/php-mvc-1/main/logout">Cerrar sesión</a></li>
+            <li><a href="/php-mvc-1/Main/logout">Cerrar sesión</a></li>
           </ul>
         </li>
       </ul>

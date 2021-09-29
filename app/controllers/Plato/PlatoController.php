@@ -36,7 +36,7 @@ class PlatoController extends Controller
 
   public function form($message = '')
   {
-    $params = array('cedula' => $this->session->get('cedula'),'show_form' => true, 'message' => $message);
+    $params = array('nombre' => $this->session->get('nombre'),'show_form' => true, 'message' => $message);
     $this->render(__CLASS__, $params);
   }
 
@@ -44,7 +44,7 @@ class PlatoController extends Controller
   {
     $platos = $this->model->PlatosList();
 
-    $params = array('cedula' => $this->session->get('cedula'),'show_platos_list' => true, 'message_type' => $message_type, 'message' => $message, 'platos' => $platos);
+    $params = array('nombre' => $this->session->get('nombre'),'show_platos_list' => true, 'message_type' => $message_type, 'message' => $message, 'platos' => $platos);
     return $this->render(__CLASS__, $params);
   }
 
@@ -56,7 +56,7 @@ class PlatoController extends Controller
     ? $info_plato = array()
     : $info_plato = $result->fetch_object();
 
-    $params = array('cedula' => $this->session->get('cedula'), 'show_edit_form' => true, 'info_plato' => $info_plato);
+    $params = array('nombre' => $this->session->get('nombre'), 'show_edit_form' => true, 'info_plato' => $info_plato);
     return $this->render(__CLASS__, $params);
   }
 
@@ -71,7 +71,7 @@ class PlatoController extends Controller
 
     $resultFotos = $this->model->PlatoFotos($Id);
 
-    $params = array('cedula' => $this->session->get('cedula'), 'show_edit_form_foto' => true, 'info_plato' => $info_plato, 'info_fotos' => $resultFotos);
+    $params = array('nombre' => $this->session->get('nombre'), 'show_edit_form_foto' => true, 'info_plato' => $info_plato, 'info_fotos' => $resultFotos);
     return $this->render(__CLASS__, $params);
   }
 

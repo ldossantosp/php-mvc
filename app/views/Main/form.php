@@ -3,16 +3,20 @@
   <div class="col-md-6">
     <form method="POST" action="<?= FOLDER_PATH . '/Main/addClient' ?>">
       <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" name="name" class="form-control" id="name" placeholder="Name" >
+        <label for="CI">CI</label>
+        <input type="text" name="CI" class="form-control" id="CI" placeholder="CI" >
       </div>
       <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" name="email" class="form-control" id="email" placeholder="Email" >
+        <label for="Nombre">Nombre</label>
+        <input type="Nombre" name="Nombre" class="form-control" id="Nombre" placeholder="Nombre" >
       </div>
       <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" name="address" class="form-control" id="address" placeholder="Address" >
+        <label for="Direccion">Direccion</label>
+        <input type="text" name="Direccion" class="form-control" id="Direccion" placeholder="Direccion" >
+      </div>
+      <div class="form-group">
+        <label for="Password">Password</label>
+        <input type="Password" name="Password" class="form-control" id="Password" placeholder="Password" >
       </div>
       <?php
         !empty($message)

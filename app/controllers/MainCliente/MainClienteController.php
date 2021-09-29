@@ -24,7 +24,7 @@ class MainClienteController extends Controller
 
     public function exec()
     {
-        $this->platosList(); //hacer esta función
+        $this->platosList();
     }
 
     public function logout()

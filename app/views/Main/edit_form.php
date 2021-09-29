@@ -4,18 +4,18 @@
   <div class="col-md-6">
     <form method="POST" action="<?= FOLDER_PATH . '/Main/updateClient' ?>">
       <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" name="name" class="form-control" id="name" placeholder="Name" value="<?= $info_client->name ?>">
+        <label for="CI">CI</label>
+        <input type="text" name="CI" class="form-control" id="CI" placeholder="CI" value="<?= $info_client->CI?>" readonly>
       </div>
       <div class="form-group">
-        <label for="email">Email address</label>
-        <input type="email" name="email" class="form-control" id="email" placeholder="Email" value="<?= $info_client->email ?>">
+        <label for="Nombre">Nombre</label>
+        <input type="Nombre" name="Nombre" class="form-control" id="Nombre" placeholder="Nombre" value="<?= $info_client->Nombre?>">
       </div>
       <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" name="address" class="form-control" id="address" placeholder="Address" value="<?= $info_client->address ?>">
+        <label for="address">Direccion</label>
+        <input type="text" name="Direccion" class="form-control" id="Direccion" placeholder="Direccion" value="<?= $info_client->Direccion ?>">
       </div>
-      <input type="hidden" name="id" value="<?= $info_client->id ?>">
+      <!--input type="hidden" name="id" value="<--?= $info_client->id ?>"-->
       <button type="submit" class="btn btn-primary">Submit</button>
       <a class="btn btn-default" href="<?= FOLDER_PATH . '/Main/clientsList' ?>" role="button">Cancel</a>
     </form>

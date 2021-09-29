@@ -35,7 +35,7 @@ class MainController extends Controller
 
   public function form($message = '')
   {
-    $params = array('cedula' => $this->session->get('cedula'),'show_form' => true, 'message' => $message);
+    $params = array('nombre' => $this->session->get('nombre'),'show_form' => true, 'message' => $message);
     $this->render(__CLASS__, $params);
   }
 
@@ -43,19 +43,19 @@ class MainController extends Controller
   {
     $clients = $this->model->clientsList();
 
-    $params = array('cedula' => $this->session->get('cedula'),'show_clients_list' => true, 'message_type' => $message_type, 'message' => $message, 'clients' => $clients);
+    $params = array('nombre' => $this->session->get('nombre'),'show_clients_list' => true, 'message_type' => $message_type, 'message' => $message, 'clients' => $clients);
     return $this->render(__CLASS__, $params);
   }
 
-  public function clientList($id)
+  public function clientList($CI)
   {
-    $result = $this->model->clientList($id);
+    $result = $this->model->clientList($CI);
 
     $info_client = !$result->num_rows
     ? $info_client = array()
     : $info_client = $result->fetch_object();
 
-    $params = array('cedula' => $this->session->get('cedula'), 'show_edit_form' => true, 'info_client' => $info_client);
+    $params = array('nombre' => $this->session->get('nombre'), 'show_edit_form' => true, 'info_client' => $info_client);
     return $this->render(__CLASS__, $params);
   }
 
@@ -80,20 +80,20 @@ class MainController extends Controller
     return true;
   }
 
-  public function removeClient($id)
+  public function removeClient($CI)
   {
-    if(empty($id))
-      return $this->clientsList('No se recibió el ID del cliente', 'warning');
+    if(empty($CI))
+      return $this->clientsList('No se recibió la cédula del cliente', 'warning');
 
-    if(!is_numeric($id))
-      return $this->clientsList('El ID del cliente debe ser numérico', 'warning');
+    if(!is_numeric($CI))
+      return $this->clientsList('La cédula del cliente debe ser numérica', 'warning');
 
-    $result = $this->model->removeClient($id);
+    $result = $this->model->removeClient($CI);
 
     if(!$result || !$this->model->affected_rows())
-      return $this->clientsList("Hubo un error al remover el cliente número {$id}", 'warning');
+      return $this->clientsList("Hubo un error al remover el cliente número {$CI}", 'warning');
 
-    $this->clientsList("Cliente número {$id} removido");
+    $this->clientsList("Cliente con cédula {$CI} removido");
   }
 
   public function updateClient($request_params)
@@ -101,15 +101,15 @@ class MainController extends Controller
     if(!$this->verify($request_params))
       return $this->clientsList('Son necesarios todos los campos para editar', 'warning');
 
-    if(!is_numeric($request_params['id']))
-      return $this->clientsList('El ID del cliente debe ser numérico para editar', 'warning');
+    //if(!is_numeric($request_params['id']))
+    //  return $this->clientsList('El ID del cliente debe ser numérico para editar', 'warning');
 
     $result = $this->model->updateClient($request_params);
 
     if(!$result || !$this->model->affected_rows())
-      return $this->clientsList("Hubo un error al editar el cliente número {$request_params['id']}", 'warning');
+      return $this->clientsList("No hubo cambio de datos o hubo un error al editar el cliente con CI:  {$request_params['CI']}", 'warning');
 
-    $this->clientsList("Cliente número {$request_params['id']} actualizado");
+    $this->clientsList("Cliente número {$request_params['CI']} actualizado");
   }
 
 }

@@ -17,38 +17,38 @@ class MainModel extends Model
 
   public function addClient($params)
   {
-    $name = $this->db->real_escape_string($params['name']);
-    $email = $this->db->real_escape_string($params['email']);
-    $address = $this->db->real_escape_string($params['address']);
-    $sql = "INSERT INTO clients (name, email, address) VALUES ('$name', '$email', '$address')";
+    $CI = $this->db->real_escape_string($params['CI']);
+    $name = $this->db->real_escape_string($params['Nombre']);
+    $address = $this->db->real_escape_string($params['Direccion']);
+    $password = $this->db->real_escape_string($params['Password']);
+    $sql = "INSERT INTO Cliente (CI, Nombre, Direccion, Password) VALUES ('$CI','$name', '$address', 'password')";
     return $this->db->query($sql);
   }
 
   public function clientsList()
   {
-    $sql = 'SELECT * FROM clients';
+    $sql = 'SELECT * FROM Cliente';
     return $this->db->query($sql);
   }
 
-  public function clientList($id)
+  public function clientList($CI)
   {
-    $sql = "SELECT * FROM clients WHERE id='{$id}'";
+    $sql = "SELECT * FROM Cliente WHERE CI='{$CI}'";
     return $this->db->query($sql);
   }
 
-  public function removeClient($id)
+  public function removeClient($CI)
   {
-    $sql = "DELETE FROM clients WHERE id={$id}";
+    $sql = "DELETE FROM Cliente WHERE CI={$CI}";
     return $this->db->query($sql);
   }
 
   public function updateClient($params)
   {
-    $name = $this->db->real_escape_string($params['name']);
-    $email = $this->db->real_escape_string($params['email']);
-    $address = $this->db->real_escape_string($params['address']);
-    $id = $this->db->real_escape_string($params['id']);
-    $sql = "UPDATE clients SET name='{$name}', email='{$email}', address='{$address}' WHERE id='{$id}'";
+    $name = $this->db->real_escape_string($params['Nombre']);
+    $address = $this->db->real_escape_string($params['Direccion']);
+    $CI = $this->db->real_escape_string($params['CI']);
+    $sql = "UPDATE Cliente SET Nombre='{$name}', Direccion='{$address}' WHERE CI='{$CI}'";
     return $this->db->query($sql);
   }
 }

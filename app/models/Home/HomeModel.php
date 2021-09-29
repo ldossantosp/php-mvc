@@ -21,4 +21,18 @@ class HomeModel extends Model
     return $this->db->query("SELECT * FROM `usuario` WHERE `id_dev` = $id")->fetch_array(MYSQLI_ASSOC);
   }
 
+
+  public function listarInfoPlatos()
+  {
+    $sql = "SELECT * from Plato";
+    return $this->db->query($sql);
+  }
+
+  public function ListarFotosPlato($Id)
+  {
+    $sql = "SELECT Foto FROM PlatoFoto where IdPlato ='{$Id}'";
+    return $this->db->query($sql);
+  }
+
+
 }
