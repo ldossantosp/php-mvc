@@ -23,51 +23,47 @@
     echo '<p>'.$info_plato[$i][2].'</p>';
     echo '<footer>'.$info_plato[$i][3].'</footer>';
     echo '</blockquote>'
-
   ?>  
-    <div id="myCarousel<?=$i?>" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel<?=$i?>" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel<?=$i?>" data-slide-to="1"></li>
-        <li data-target="#myCarousel<?=$i?>" data-slide-to="2"></li>
-    </ol>
+    <div id="myCarousel<?= $i==0 ? '' : $i?>" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel<?= $i==0 ? '' : $i?>" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel<?= $i==0 ? '' : $i?>" data-slide-to="1"></li>
+            <li data-target="#myCarousel<?= $i==0 ? '' : $i?>" data-slide-to="2"></li>
+        </ol>
 
-     <!-- Wrapper for slides -->
-     <div class="carousel-inner" >
-     <?php
-            $contador = 0;
-            while ($row = $info_plato[$i][4]->fetch_assoc())
-            {
-                if($contador == 0){
-                    $nameFoto = $row['Foto'];
-                    echo"<div class=\"item active\" >
-                          <p class=\"text-center\"><img src=\"/uploads/{$nameFoto}\" alt=\"\" class=\"img-thumbnail\"></p>
-                        </div>";
-                }
-                else{
-                    $nameFoto = $row['Foto'];
-                    echo"<div class=\"item\">
-                          <p class=\"text-center\"><img src=\"/uploads/{$nameFoto}\" alt=\"\" class=\"img-thumbnail\">
-                        </div>";
-                }
-                $contador = $contador + 1;
-            }
-        ?>
-     </div>
-    <!-- Controls -->
-    <a class="left carousel-control" href="#myCarousel<?=$i?>" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel<?=$i?>" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-        <span class="sr-only">Next</span>
-    </a>
-
-    
-
-</div>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" >
+          <?php
+                  $contador = 0;
+                  while ($row = $info_plato[$i][4]->fetch_assoc())
+                  {
+                      if($contador == 0){
+                          $nameFoto = $row['Foto'];
+                          echo"<div class=\"item active\" >
+                                <p class=\"text-center\"><img width=\"200px\" height=\"150px\" src=\"/uploads/{$nameFoto}\" alt=\"\" class=\"img-thumbnail\"></p>
+                              </div>";
+                      }
+                      else{
+                          $nameFoto = $row['Foto'];
+                          echo"<div class=\"item\">
+                                <p class=\"text-center\"><img width=\"200px\" height=\"150px\" src=\"/uploads/{$nameFoto}\" alt=\"\" class=\"img-thumbnail\">
+                              </div>";
+                      }
+                      $contador = $contador + 1;
+                  }
+              ?>
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel<?= $i==0 ? '' : $i?>" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel<?= $i==0 ? '' : $i?>" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
 <?php
   }//for
 ?>

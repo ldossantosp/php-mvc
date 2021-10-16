@@ -24,15 +24,68 @@ class MainClienteController extends Controller
 
     public function exec()
     {
-        $this->platosList();
+        $this->InfoPlatoFotos();
     }
 
-    public function logout()
+    public function InfoPlatoFotos()
     {
-        $this->session->close();
-        header('location: /php-mvc-1/Login');
+        $result = $this->model->listarInfoPlatos();
+        $contador = 0;
+        while($row = $result->fetch_assoc())
+        {
+            $info_plato[$contador][1] = $row['Id'];
+            $info_plato[$contador][2] = $row['Nombre'];
+            $info_plato[$contador][3] = $row['Descripcion'];
+            $fotos = $this->model->ListarFotosPlato($row['Id']);
+            $info_plato[$contador][4] = $fotos;
+            $contador++;
+        }
+        $params = array('info_plato' => $info_plato, 'nombre'=>$this->session->get('nombre'), 'show_menuPlatos' => true);
+        $this->render(__CLASS__, $params);
     }
 
+    public function reserva()
+    {
+        $params = array('show_reserva'=> true, 'nombre'=>$this->session->get('nombre'));
+        $this->render(__CLASS__, $params);
+    }
+
+    public function RealizarReserva($request_params)
+    {
+        $result = $this->model->obtenerMesasDisponibles($request_params);
+
+        if(!$result || !$this->model->affected_rows()){
+            $this->showReservaMessage('No hay mesas disponibles para la fecha y cantidad de personas indicadas', 'danger');
+        }
+        else{
+            $row = $result->fetch_assoc();
+            $nroMesa = $row['Nro'];
+            $result = $this->model->RealizarReserva($request_params, $nroMesa, $this->session->get('cedula'));
+            if(!$result || !$this->model->affected_rows()){
+                $this->showReservaMessage('Hubo un error al realizar la reserva o ya fue realizada. Chekea en "mis reservas"', 'danger');
+            }
+            else{
+                $fecha = $request_params['fechaReserva'];
+                $cantPersonas = $request_params['cantidad'];
+                $turno = $request_params['turno'];
+                $info_Reserva = array('fecha'=>$fecha, 'cantPersonas'=>$cantPersonas, 'turno'=>$turno, 'nroMesa'=>$nroMesa);
+                $this->showReservaMessage('La reserva fue realizada de forma exitosa', 'success', $info_Reserva);
+            }
+        }
+    }
+
+    public function showReservaMessage($message = '', $message_type, $info_Reserva = '')
+    {
+        $params = array("message"=>$message, "message_type" => $message_type, 'show_info_reserva'=> true, 'info_Reserva'=>$info_Reserva, 'nombre'=>$this->session->get('nombre'));
+        return $this->render(__CLASS__, $params);
+    }
+
+    public function MisReservas(){
+        $reservas = $this->model->MisReservas($this->session->get('cedula'));
+
+    }
+
+    //**************Funciones viejas **************************************/
     public function platosList($message = '', $message_type = 'success')
     {
         $platos = $this->model->PlatosList();

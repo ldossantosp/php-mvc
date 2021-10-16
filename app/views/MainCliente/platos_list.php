@@ -1,39 +1,24 @@
 <?php !empty($message) ? print("<div class=\"alert alert-$message_type\">$message</div>") : '' ?>
-<div class="row">
-  <div class="col-md-12">
-
-    <h2>Platos list</h2>
-
-    <table class="table table-striped">
-      <thead>
-        <th>#</th>
-        <th>Descripcion</th>
-        <th>Precio</th>
-        <th>Nombre</th>
-        <th>Foto</th>
-      </thead>
-      <tbody>
+  <div class="jumbotron">
+    <div class="row">
         <?php
-        $idAnterior = 0;
-        while ($row = $platos->fetch_assoc())
-        {
-          if($idAnterior != $row['Id']){
-            echo '<tr>';
-            echo "<td>{$row['Id']}</td>";
-            echo "<td>{$row['Descripcion']}</td>";
-            echo "<td>{$row['Precio']}</td>";
-            echo "<td>{$row['Nombre']}</td>";
-            $nameFoto = $row['Foto'];
-            echo "<td><img src=\"/uploads/$nameFoto\"></td>"; 
-            echo "<td><a href='" . FOLDER_PATH ."/MainCliente/platoFotosList/{$row['Id']}'>Ver más...</a></td>";
-            echo "<td><a href='" . FOLDER_PATH ."/Plato/PlatoFotos/{$row['Id']}'>Pedir</a></td>";
-            echo '</tr>';
-            $idAnterior = $row['Id'];
-          }
-        }
+        for ($i=0; $i<count($info_plato); $i++){
+            $row = $info_plato[$i][4]->fetch_assoc(); 
+            $nameFoto = $row['Foto'];   
+            echo"
+                <div class=\"col-sm-6 col-md-4\">
+                    <div class=\"thumbnail\">
+                        <img src=\"/uploads/{$nameFoto}\" alt=\"...\">
+                        <div class=\"caption\">
+                            <h3>".$info_plato[$i][2]."</h3>
+                            <p>".$info_plato[$i][3]."</p>
+                            <p><a href=\"#\" class=\"btn btn-primary\" role=\"button\">Button</a> <a href=\"#\" class=\"btn btn-default\" role=\"button\">Button</a></p>
+                        </div>
+                    </div>
+                
+                </div>";
+        }//for    
         ?>
-      </tbody>
-    </table>
-
+      </div>
+    </div>
   </div>
-</div>
